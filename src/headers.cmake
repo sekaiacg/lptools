@@ -1,0 +1,15 @@
+# header
+set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+set(libcutils_headers             "${LIB_DIR}/core/libcutils/include"          CACHE INTERNAL "libcutils_headers")
+set(libbase_headers               "${LIB_DIR}/libbase/include"                 CACHE INTERNAL "libbase_headers")
+set(liblog_headers                "${LIB_DIR}/logging/liblog/include"          CACHE INTERNAL "liblog_headers")
+set(libz_headers                  "${LIB_DIR}/zlib"                            CACHE INTERNAL "libz_headers")
+set(libsparse_headers             "${LIB_DIR}/core/libsparse/include"          CACHE INTERNAL "libsparse_headers")
+set(libext4_utils_headers         "${LIB_DIR}/extras/ext4_utils/include"       CACHE INTERNAL "libext4_utils_headers")
+set(libcrypto_headers             "${LIB_DIR}/boringssl/src/include"           CACHE INTERNAL "libcrypto_headers")
+set(libcrypto_utils_headers       "${LIB_DIR}/core/libcrypto_utils/include"    CACHE INTERNAL "libcrypto_utils_headers")
+set(liblp_headers                 "${LIB_DIR}/core/fs_mgr/liblp/include"       CACHE INTERNAL "liblp_headers")
+set(libjsonpbparse_headers        "${LIB_DIR}/extras/libjsonpb/parse/include"  CACHE INTERNAL "libjsonpbparse_headers")
+set(libfmtlib_headers             "${LIB_DIR}/fmtlib/include"                  CACHE INTERNAL "libfmtlib_headers")
+set(libprotobuf-cpp-full_headers  "${LIB_DIR}/protobuf/src"                    CACHE INTERNAL "libprotobuf-cpp-full_headers"
+)

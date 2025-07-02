@@ -1,0 +1,36 @@
+[submodule "src/lib/libcxx"]
+	path = src/lib/libcxx
+	url = https://github.com/topjohnwu/libcxx
+	branch = master
+[submodule "src/lib/zlib"]
+	path = src/lib/zlib
+	url = https://android.googlesource.com/platform/external/zlib
+	branch = main
+[submodule "src/lib/fmtlib"]
+	path = src/lib/fmtlib
+	url = https://android.googlesource.com/platform/external/fmtlib
+	branch = main
+[submodule "src/lib/libbase"]
+	path = src/lib/libbase
+	url = https://android.googlesource.com/platform/system/libbase
+	branch = main
+[submodule "src/lib/logging"]
+	path = src/lib/logging
+	url = https://chromium.googlesource.com/aosp/platform/system/logging
+	branch = master
+[submodule "src/lib/core"]
+	path = src/lib/core
+	url = https://android.googlesource.com/platform/system/core
+	branch = main
+[submodule "src/lib/extras"]
+	path = src/lib/extras
+	url = https://android.googlesource.com/platform/system/extras
+	branch = main
+[submodule "src/lib/boringssl"]
+	path = src/lib/boringssl
+	url = https://android.googlesource.com/platform/external/boringssl
+	branch = main
+[submodule "src/lib/protobuf"]
+	path = src/lib/protobuf
+	url = https://android.googlesource.com/platform/external/protobuf
+	branch = main
