@@ -385,11 +385,3 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
 else (CMAKE_SYSTEM_NAME MATCHES "Darwin|Windows")
     list(APPEND libcrypto_sources_flags "-DOPENSSL_NO_ASM")
 endif ()
-
-
-#"libcrypto_sources",
-#"libcrypto_defaults",
-#"boringssl_defaults",
-#"boringssl_flags",
-
-

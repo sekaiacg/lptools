@@ -11,12 +11,12 @@ set(TARGET_CFLAGS
     "-Wno-c99-designator"
 )
 
-#check_compile_flag_supported("-Wno-vla-cxx-extension" IF_SUPPORT)
-#if (IF_SUPPORT)
-list(APPEND TARGET_CFLAGS "-Wno-vla-cxx-extension")
-#else ()
-#    list(APPEND TARGET_CFLAGS "-Wno-vla-extension")
-#endif ()
+check_compile_flag_supported("-Wno-vla-cxx-extension" IF_SUPPORT)
+if (IF_SUPPORT)
+    list(APPEND TARGET_CFLAGS "-Wno-vla-cxx-extension")
+else ()
+    list(APPEND TARGET_CFLAGS "-Wno-vla-extension")
+endif ()
 
 set(libbase_srcs
     "${TARGET_SRC_DIR}/abi_compatibility.cpp"

@@ -32,6 +32,7 @@ target_compile_options(${TARGET_simg2img} PRIVATE "$<$<COMPILE_LANGUAGE:C>:${TAR
 set(TARGET_append2simg append2simg)
 set(append2simg_srcs "${TARGET_SRC_DIR}/append2simg.cpp")
 add_executable(${TARGET_append2simg} ${append2simg_srcs})
+target_precompile_headers(${TARGET_append2simg} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/libsparse_defs.h")
 target_include_directories(${TARGET_append2simg} PRIVATE ${libsparse_headers})
 target_link_libraries(${TARGET_append2simg} ${common_static_lib})
 target_compile_options(${TARGET_append2simg} PRIVATE "$<$<COMPILE_LANGUAGE:C>:${TARGET_CFLAGS}>" "$<$<COMPILE_LANGUAGE:CXX>:${TARGET_CFLAGS}>")
