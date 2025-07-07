@@ -376,7 +376,6 @@ set(libcrypto_sources
 set(libcrypto_bcm_sources_asm)
 set(libcrypto_bcm_sources "${TARGET_SRC_DIR}/src/crypto/fipsmodule/bcm.cc")
 
-
 set(libcrypto_sources_flags)
 
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")

@@ -14,10 +14,7 @@ set(TARGET_CFLAGS
 
 set(TARGET_LDFLAGS)
 
-if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    list(APPEND libcrypto_sources ${libcrypto_sources_asm})
-    list(APPEND libcrypto_bcm_sources ${libcrypto_bcm_sources_asm})
-elseif (CMAKE_SYSTEM_NAME MATCHES "Android")
+if (CMAKE_SYSTEM_NAME MATCHES "Android")
     list(APPEND TARGET_LDFLAGS "-Wl,-Bsymbolic")
 elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
     list(APPEND TARGET_LDFLAGS "-lws2_32")
