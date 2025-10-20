@@ -7,12 +7,14 @@ cmake_build()
     local METHOD=$2
     local ABI=$3
 
+    local MAKE_CMD=""
+    local BUILD_METHOD=""
     if [[ $METHOD == "Ninja" ]]; then
-        local BUILD_METHOD="-G Ninja"
-        local MAKE_CMD="time -p cmake --build $OUT -j$(sysctl -n hw.logicalcpu) --target lpadd lpdump lpmake lpunpack append2simg img2simg simg2img"
+        BUILD_METHOD="-G Ninja"
+        MAKE_CMD="time -p cmake --build $OUT -j$(sysctl -n hw.logicalcpu) --target lpadd lpdump lpmake lpunpack append2simg img2simg simg2img"
     elif [[ $METHOD == "make" ]]; then
-        local MAKE_CMD="time -p make -C $OUT -j$(sysctl -n hw.logicalcpu)"
-    fi;
+        MAKE_CMD="time -p make -C $OUT -j$(sysctl -n hw.logicalcpu)"
+    fi
 
     local PROCESSOR=""
     [ ${ABI} == "x86_64" ] && PROCESSOR="x86_64"
@@ -48,10 +50,11 @@ build()
     rm -rf $OUT > /dev/null 2>&1
 
     local NINJA=`which ninja`
+    local METHOD=""
     if [[ -f $NINJA ]]; then
-        local METHOD="Ninja"
+        METHOD="Ninja"
     else
-        local METHOD="make"
+        METHOD="make"
     fi
 
     cmake_build "${TARGET}" "${METHOD}" "${ABI}" "${PLATFORM}"
@@ -72,7 +75,7 @@ build()
 
     if [ -f "$LPADD_BIN" -a -f "$LPDUMP_BIN" -a -f "$LPMAKE_BIN" -a -f "$LPUNPACK_BIN" -a -f "$APPEND2SIMG_BIN" -a -f "$IMG2SIMG_BIN" -a -f "$SIMG2IMG_BIN" ]; then
         echo "复制文件中..."
-    	[[ ! -d "$TARGET_DIR_PATH" ]] && mkdir -p ${TARGET_DIR_PATH}
+        [[ ! -d "$TARGET_DIR_PATH" ]] && mkdir -p ${TARGET_DIR_PATH}
         cp -af $LPADD_BIN ${TARGET_DIR_PATH}
         cp -af $LPDUMP_BIN ${TARGET_DIR_PATH}
         cp -af $LPMAKE_BIN ${TARGET_DIR_PATH}

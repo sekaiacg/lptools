@@ -7,12 +7,14 @@ cmake_build()
     local METHOD=$2
     local ABI=$3
 
+    local MAKE_CMD=""
+    local BUILD_METHOD=""
     if [[ $METHOD == "Ninja" ]]; then
-        local BUILD_METHOD="-G Ninja"
-        local MAKE_CMD="time -p cmake --build $OUT -j$(nproc) --target lpadd lpdump lpmake lpunpack append2simg img2simg simg2img"
+        BUILD_METHOD="-G Ninja"
+        MAKE_CMD="time -p cmake --build $OUT -j$(nproc) --target lpadd lpdump lpmake lpunpack append2simg img2simg simg2img"
     elif [[ $METHOD == "make" ]]; then
-        local MAKE_CMD="time -p make -C $OUT -j$(nproc)"
-    fi;
+        MAKE_CMD="time -p make -C $OUT -j$(nproc)"
+    fi
 
     if [[ $TARGET == "Android" ]]; then
         local ANDROID_PLATFORM=$4
@@ -48,14 +50,13 @@ cmake_build()
                 -DCMAKE_BUILD_TYPE="Release" \
                 -DCMAKE_C_COMPILER_LAUNCHER="ccache" \
                 -DCMAKE_CXX_COMPILER_LAUNCHER="ccache" \
-                -DCMAKE_C_COMPILER="${CUSTOM_CLANG_PATH}/bin/clang" \
-                -DCMAKE_CXX_COMPILER="${CUSTOM_CLANG_PATH}/bin/clang++" \
-                -DCMAKE_SYSROOT="${GCC_AARCH64_TOOLS_PATH}/aarch64-linux-gnu/libc" \
+                -DCMAKE_C_COMPILER="clang" \
+                -DCMAKE_CXX_COMPILER="clang++" \
                 -DCMAKE_C_COMPILER_TARGET="aarch64-linux-gnu" \
                 -DCMAKE_CXX_COMPILER_TARGET="aarch64-linux-gnu" \
                 -DCMAKE_ASM_COMPILER_TARGET="aarch64-linux-gnu" \
-                -DCMAKE_C_FLAGS="--gcc-toolchain=${GCC_AARCH64_TOOLS_PATH}" \
-                -DCMAKE_CXX_FLAGS="--gcc-toolchain=${GCC_AARCH64_TOOLS_PATH}" \
+                -DCMAKE_C_FLAGS="" \
+                -DCMAKE_CXX_FLAGS="" \
                 -DENABLE_FULL_LTO="ON"
         fi
     elif [[ $TARGET == "Windows" ]]; then
@@ -83,10 +84,11 @@ build()
     rm -rf $OUT > /dev/null 2>&1
 
     local NINJA=`which ninja`
+    local METHOD=""
     if [[ -f $NINJA ]]; then
-        local METHOD="Ninja"
+        METHOD="Ninja"
     else
-        local METHOD="make"
+        METHOD="make"
     fi
 
     cmake_build "${TARGET}" "${METHOD}" "${ABI}" "${PLATFORM}"
@@ -109,7 +111,7 @@ build()
 
     if [ -f "$LPADD_BIN" -a -f "$LPDUMP_BIN" -a -f "$LPMAKE_BIN" -a -f "$LPUNPACK_BIN" -a -f "$APPEND2SIMG_BIN" -a -f "$IMG2SIMG_BIN" -a -f "$SIMG2IMG_BIN" ]; then
         echo "复制文件中..."
-    	[[ ! -d "$TARGET_DIR_PATH" ]] && mkdir -p ${TARGET_DIR_PATH}
+        [[ ! -d "$TARGET_DIR_PATH" ]] && mkdir -p ${TARGET_DIR_PATH}
         cp -af $LPADD_BIN ${TARGET_DIR_PATH}
         cp -af $LPDUMP_BIN ${TARGET_DIR_PATH}
         cp -af $LPMAKE_BIN ${TARGET_DIR_PATH}
