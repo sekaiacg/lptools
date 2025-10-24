@@ -70,7 +70,7 @@ build()
     local IMG2SIMG_BIN="$S_BIN_DIR/img2simg"
     local SIMG2IMG_BIN="$S_BIN_DIR/simg2img"
 
-    local TARGE_DIR_NAME="lptools-${TARGET}_${ABI}-$(TZ=UTC-8 date +%y%m%d%H%M)"
+    local TARGE_DIR_NAME="lptools-$(TZ=UTC-8 date +%y%m%d)-${TARGET}_${ABI}"
     local TARGET_DIR_PATH="./target/${TARGET}_${ABI}/${TARGE_DIR_NAME}"
 
     if [ -f "$LPADD_BIN" -a -f "$LPDUMP_BIN" -a -f "$LPMAKE_BIN" -a -f "$LPUNPACK_BIN" -a -f "$APPEND2SIMG_BIN" -a -f "$IMG2SIMG_BIN" -a -f "$SIMG2IMG_BIN" ]; then
