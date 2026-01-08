@@ -82,6 +82,7 @@ build()
         cp -af $LPUNPACK_BIN ${TARGET_DIR_PATH}
         cp -af $APPEND2SIMG_BIN ${TARGET_DIR_PATH}
         cp -af $APPEND2SIMG_BIN ${TARGET_DIR_PATH}
+        cp -af $IMG2SIMG_BIN ${TARGET_DIR_PATH}
         cp -af $SIMG2IMG_BIN ${TARGET_DIR_PATH}
         touch -c -d "2009-01-01 00:00:00" ${TARGET_DIR_PATH}/*
         echo "编译成功: ${TARGE_DIR_NAME}"
