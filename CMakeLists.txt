@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26...4.0.2)
+cmake_minimum_required(VERSION 3.26...4.2.1)
 include(cmake/check.cmake)
 project(lptools LANGUAGES C CXX ASM)
 

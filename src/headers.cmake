@@ -11,5 +11,4 @@ set(libcrypto_utils_headers       "${LIB_DIR}/core/libcrypto_utils/include"    C
 set(liblp_headers                 "${LIB_DIR}/core/fs_mgr/liblp/include"       CACHE INTERNAL "liblp_headers")
 set(libjsonpbparse_headers        "${LIB_DIR}/extras/libjsonpb/parse/include"  CACHE INTERNAL "libjsonpbparse_headers")
 set(libfmtlib_headers             "${LIB_DIR}/fmtlib/include"                  CACHE INTERNAL "libfmtlib_headers")
-set(libprotobuf-cpp-full_headers  "${LIB_DIR}/protobuf/src"                    CACHE INTERNAL "libprotobuf-cpp-full_headers"
-)
+set(libprotobuf-cpp-full_headers  "${LIB_DIR}/protobuf/src"                    CACHE INTERNAL "libprotobuf-cpp-full_headers")
