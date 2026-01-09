@@ -102,8 +102,10 @@ endif ()
 target_include_directories(${TARGET} PUBLIC ${TARGET_SRC_DIR})
 
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "i686|x86_64")
-    target_compile_options(${TARGET} PRIVATE "-msse4.2" "-mpclmul")
-endif ()
+    list(APPEND TARGET_CFLAGS "-msse4.2" "-mpclmul")
+elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "arm64|aarch64")
+    list(APPEND TARGET_CFLAGS "-march=armv8-a+crypto")
+endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_link_libraries(${TARGET} "pthread")
